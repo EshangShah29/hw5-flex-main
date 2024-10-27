@@ -1,3 +1,4 @@
+/* Define an animation for the logo */
 @keyframes logoAnimation {
     from {
       width: 25px;
@@ -8,15 +9,17 @@
       opacity: 1;
     }
   }
-  
+
+  /* Apply the animation to #logo, unless motion is reduced */
   #logo:not([data-reduced-motion="reduce"]) {
     animation: logoAnimation 5s;
   }
-  
+  /*Poppins font and serif backup */
   body {
     font-family: 'Poppins', serif;
     background-image: url('concrete_seamless.png'), none;
     background-color: #f1f1f1;
+    font-size: 1.5rem;
   }
   
   header {
@@ -24,22 +27,22 @@
     flex-direction: column;
     align-items: center;
   }
-  
+  /* Navigation links in a column */
   .nav_links {
     display: flex;
     flex-direction: column;
   }
-  
+  /* Link colors for visited and unvisited states */
   a:link, a:visited {
     color: #0011fc;
   }
-  
+  /*Default card style*/
   .card {
     flex-basis: 450px;
     border-top-right-radius: 50px;
     border-top-left-radius: 50px;
   }
-  
+  /*Card style for every cards in the header*/
   .card > header {
     background: #288088;
     border: 2px solid #45ADAD;
@@ -47,25 +50,30 @@
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
   }
-  
+  /*Focus styling for buttons, card and img*/
+  .card button:focus, .card:focus , img:focus{
+    border: 5px solid orange;
+  }
+
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   .pricing {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
   }
   
-  
+/* Gallery image styling, with border and margin */
   .gallery img {
     border: 10px solid #50C7C7;
     margin: 10px;
     width: 300px;
   }
   
-  .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+
   
   @media screen and (min-width: 900px) {
     header, .nav_links {
@@ -84,25 +92,27 @@
     }
   
     .card {
-      flex: 0 0 275px;
+      flex: 0 0 275px; /* Set a fixed width for each card */
       margin: 10px;
       padding-top: 0;
       border: 2px solid #45ADDD;
     }
-  
+
+    /* Make header sticky on scroll */
     body > header {
       position: sticky;
       top: 0;
       z-index: 999;
     }
   }
-  
-  @media (prefers-reduced-motion: reduce) {
+
+  /* Disable logo animation if motion preference is set to reduce */
+  @media all and (prefers-reduced-motion: reduce) {
     #logo {
       animation: none;
     }
   }
-  
+  /*Styling for a print media*/
   @media print {
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -128,11 +138,13 @@
       border: 2px solid #45ADDD;
       flex-basis: 325px;
     }
-  
+
+    /* Hide gallery in print view */
     .gallery, #gallery {
       display: none;
     }
-  
+    
+    /* Add thumbs-up emoji after the second pricing item in print */
     .pricing li:nth-child(2)::after {
       content: "\1F44D";
       font-family: Arial, Helvetica, sans-serif;
