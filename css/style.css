@@ -9,10 +9,11 @@
       opacity: 1;
     }
   }
-
-  /* Apply the animation to #logo, unless motion is reduced */
-  #logo:not([data-reduced-motion="reduce"]) {
-    animation: logoAnimation 5s;
+  /* Apply the animation to #logo, only if reduced motion is not preferred */
+  @media (prefers-reduced-motion: no-preference) {
+    #logo {
+      animation: logoAnimation 5s;
+    }
   }
   /*Poppins font and serif backup */
   body {
